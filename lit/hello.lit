@@ -1,0 +1,15 @@
+@title Programming
+
+@s Hello, world.
+This document is an attempt at describing the essence of programming in a way that both humans and computers can understand. Maybe I can create a way to use the same representation for both and thus make compilers obsolete. This sounds crazy, but I'll try anyways. For now however, I will need to set up the tools required to make such a document. That's why you'll find an implementation of the trivial "Hello World!" program written in ANSI C. I will explain that choice later. For now, jut let's get on with it:
+
+--- hello.c
+#include <stdio.h>
+
+int main() {
+	printf("Hello, world!\n");
+	return 0;
+}
+---
+
+Now I sould get this compiled and run automatically on as many platforms as possible. 
