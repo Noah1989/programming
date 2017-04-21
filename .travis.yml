@@ -6,15 +6,15 @@ matrix:
   - compiler: clang
   - compiler: sdcc
     env:
+    - TARGET_OPTS=-mmcs51
     - PLATFORM_SOURCES=mcs51_putchar.c
-    - TARGET_OPTS=-m${PLATFORM}
     - OBJ=.rel
     - BIN=.hex
     - RUN=cat
   - compiler: avr-gcc
     env:
-    - COMPILER_PACKAGE=gcc-avr
     - TARGET_OPTS=-mmcu=attiny2313a
+    - COMPILER_PACKAGE=gcc-avr
     - RUN=cat
 
 before_install:
