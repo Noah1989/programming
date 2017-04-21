@@ -6,6 +6,7 @@ matrix:
     env:
     - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
   - compiler: clang
+    env:
     - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
   - compiler: sdcc
     env:
