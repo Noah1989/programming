@@ -14,8 +14,9 @@ matrix:
   - compiler: avr-gcc
     env:
     - TARGET_OPTS=-mmcu=attiny2313a
-    - COMPILER_PACKAGES=gcc-avr avr-libc
-    - RUN=cat
+    - COMPILER_PACKAGES="gcc-avr avr-libc"
+    - BIN_EXT=.elf
+    - RUN=file
 
 before_install:
  - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xz -C /usr/local/bin 
