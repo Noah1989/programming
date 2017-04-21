@@ -17,10 +17,10 @@ $(patsubst %,src/%,$(PLATFORM_SOURCES)): src
 
 obj/%.o$(OBJ_EXT): src/%.c
 	mkdir -p obj
-	${CC} ${TARGET_OPTS} -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 PLATFORM_OBJECTS=$(patsubst %.c,obj/%.o$(OBJ_EXT),$(PLATFORM_SOURCES))
 
 bin/hello$(BIN_EXT): obj/hello.o$(OBJ_EXT) $(PLATFORM_OBJECTS)
 	mkdir -p bin
-	$(CC) $(CC_OPTS) -o bin/hello$(BIN_EXT) obj/hello.o$(OBJ_EXT) $(PLATFORM_OBJECTS)
+	$(CC) $(CFLAGS) -o bin/hello$(BIN_EXT) obj/hello.o$(OBJ_EXT) $(PLATFORM_OBJECTS)
