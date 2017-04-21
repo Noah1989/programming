@@ -13,4 +13,4 @@ src: lit/hello.lit
 
 bin/hello: src
 	mkdir -p bin
-	gcc -o bin/hello src/hello.c
+	${CC} -o bin/hello src/hello.c
