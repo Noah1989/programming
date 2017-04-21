@@ -6,9 +6,11 @@ matrix:
   - compiler: gcc
     env:
     - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
+
   - compiler: clang
     env:
     - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
+
   - compiler: sdcc
     env:
     - CFLAGS="-mmcs51 --std-c89 -Werror"
@@ -16,9 +18,24 @@ matrix:
     - OBJ_EXT=.rel
     - BIN_EXT=.hex
     - RUN=cat
+
   - compiler: avr-gcc
     env:
-    - CFLAGS="-mmcu=attiny2313a -std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
+    - CFLAGS="-mmcu=attiny13 -std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
+    - COMPILER_PACKAGES="gcc-avr avr-libc"
+    - BIN_EXT=.elf
+    - RUN=file
+
+  - compiler: avr-gcc
+    env:
+    - CFLAGS="-mmcu=attiny2313 -std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
+    - COMPILER_PACKAGES="gcc-avr avr-libc"
+    - BIN_EXT=.elf
+    - RUN=file
+
+  - compiler: avr-gcc
+    env:
+    - CFLAGS="-mmcu=atmega8 -std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
     - COMPILER_PACKAGES="gcc-avr avr-libc"
     - BIN_EXT=.elf
     - RUN=file
