@@ -1,8 +1,15 @@
 language: c
 script: make
-compiler:
- - gcc
- - clang
+matrix:
+  include:
+  - compiler: gcc
+    env: TARGET=default
+  - compiler: clang
+    env: TARGET=default
+  - compiler: sdcc
+    env: TARGET=mcs51
+  - compiler: avr-gcc
+    env: TARGET=attiny2313a
 
 before_script:
  - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xz -C /usr/local/bin 
