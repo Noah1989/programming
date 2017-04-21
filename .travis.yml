@@ -8,8 +8,8 @@ matrix:
     env:
     - TARGET_OPTS=-mmcs51
     - PLATFORM_SOURCES=mcs51_putchar.c
-    - OBJ=.rel
-    - BIN=.hex
+    - OBJ_EXT=.rel
+    - BIN_EXT=.hex
     - RUN=cat
   - compiler: avr-gcc
     env:
