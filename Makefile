@@ -1,16 +1,26 @@
 .PHONY: run clean
 
-run: bin/hello
-	${RUN} bin/hello
+run: bin/hello$(BIN_EXT)
+	$(RUN) bin/hello$(BIN_EXT)
 
 clean:
-	rm -rfv src bin 
+	rm -rfv src obj bin
 
 src: lit/hello.lit
 	mkdir -p src
 	lit -odir src lit/hello.lit
 	touch src
 
-bin/hello: src
+src/hello.c: src
+
+$(patsubst %,src/%,$(PLATFORM_SOURCES)): src
+
+obj/%.o$(OBJ_EXT): src/%.c
+	mkdir -p obj
+	${CC} ${TARGET_OPTS} -o $@ -c $<
+
+PLATFORM_OBJECTS=$(patsubst %.c,obj/%.o$(OBJ_EXT),$(PLATFORM_SOURCES))
+
+bin/hello$(BIN_EXT): obj/hello.o$(OBJ_EXT) $(PLATFORM_OBJECTS)
 	mkdir -p bin
-	${CC} ${TARGET} -o bin/hello src/hello.c
+	$(CC) $(CC_OPTS) -o bin/hello$(BIN_EXT) obj/hello.o$(OBJ_EXT) $(PLATFORM_OBJECTS)

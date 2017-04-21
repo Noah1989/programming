@@ -13,3 +13,17 @@ int main() {
 ---
 
 Now I sould get this compiled and run automatically on as many platforms as possible. 
+
+Some of them need some special code to work:
+
+--- mcs51_putchar.c
+#include <mcs51reg.h>
+
+void putchar (char c) {
+	while (!TI)
+		/*busy wait*/;
+	TI = 0;
+	SBUF = c;
+}
+---
+

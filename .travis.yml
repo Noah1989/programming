@@ -3,22 +3,20 @@ script: make
 matrix:
   include:
   - compiler: gcc
-    env:
-    - TARGET=
-    - RUN=
   - compiler: clang
-    env:
-    - TARGET=
-    - RUN=
   - compiler: sdcc
     env:
-    - TARGET=-mmcs51
+    - PLATFORM_SOURCES=mcs51_putchar.c
+    - TARGET_OPTS=-m${PLATFORM}
+    - OBJ=.rel
+    - BIN=.hex
     - RUN=cat
   - compiler: avr-gcc
     env:
-    - TARGET=-mmcu=attiny2313a
+    - COMPILER_PACKAGE=gcc-avr
+    - TARGET_OPTS=-mmcu=attiny2313a
     - RUN=cat
 
 before_install:
  - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xz -C /usr/local/bin 
- - $CC --version || (sudo apt-get update -qq && sudo apt-get install -qq $CC)
+ - $CC --version || (sudo apt-get update -qq && sudo apt-get install -qq ${COMPILER_PACKAGE:-$CC})
