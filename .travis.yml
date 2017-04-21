@@ -3,13 +3,21 @@ script: make
 matrix:
   include:
   - compiler: gcc
-    env: TARGET=default
+    env:
+    - TARGET=
+    - RUN=
   - compiler: clang
-    env: TARGET=default
+    env:
+    - TARGET=
+    - RUN=
   - compiler: sdcc
-    env: TARGET=mcs51
+    env:
+    - TARGET=-mmcs51
+    - RUN=cat
   - compiler: avr-gcc
-    env: TARGET=attiny2313a
+    env:
+    - TARGET=-mmcu=attiny2313a
+    - RUN=cat
 
 before_install:
  - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xz -C /usr/local/bin 

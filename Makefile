@@ -1,7 +1,7 @@
 .PHONY: run clean
 
 run: bin/hello
-	bin/hello
+	${RUN} bin/hello
 
 clean:
 	rm -rfv src bin 
@@ -13,4 +13,4 @@ src: lit/hello.lit
 
 bin/hello: src
 	mkdir -p bin
-	${CC} -o bin/hello src/hello.c
+	${CC} ${TARGET} -o bin/hello src/hello.c
