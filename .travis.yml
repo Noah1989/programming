@@ -3,17 +3,20 @@ script: make
 matrix:
   include:
   - compiler: gcc
+    env:
+    - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
   - compiler: clang
+    - CFLAGS="-std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
   - compiler: sdcc
     env:
-    - TARGET_OPTS=-mmcs51
+    - CFLAGS="-mmcs51 --std-c89 -Werror"
     - PLATFORM_SOURCES=mcs51_putchar.c
     - OBJ_EXT=.rel
     - BIN_EXT=.hex
     - RUN=cat
   - compiler: avr-gcc
     env:
-    - TARGET_OPTS=-mmcu=attiny2313a
+    - CFLAGS="-mmcu=attiny2313a -std=c89 -Wall -Wextra -Wshadow -Wpedantic -Werror"
     - COMPILER_PACKAGES="gcc-avr avr-libc"
     - BIN_EXT=.elf
     - RUN=file
