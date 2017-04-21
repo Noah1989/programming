@@ -3,3 +3,6 @@ script: make
 compiler:
  - gcc
  - clang
+
+before_script:
+ - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xv -C /usr/local/bin 
