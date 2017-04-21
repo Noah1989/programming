@@ -5,4 +5,4 @@ compiler:
  - clang
 
 before_script:
- - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xv -C /usr/local/bin 
+ - curl http://literate.zbyedidia.webfactional.com/binaries/literate-linux64.tar.gz | sudo tar -xzv -C /usr/local/bin 
