@@ -14,6 +14,7 @@ matrix:
   - compiler: sdcc
     env:
     - CFLAGS="-mmcs51 --std-c89 --Werror"
+    - COMPILER_PACKAGES="sdcc sdcc-ucsim"
     - PLATFORM_SOURCES=mcs51_putchar.c
     - OBJ_EXT=.rel
     - BIN_EXT=.hex
