@@ -12,8 +12,8 @@ later. For now, just let's get on with it:
 --- hello.c
 #include <stdio.h>
 
-int main() {
-	printf("Hello, world!\n");
+int main()
+{	printf("Hello, world!\n");
 	return 0;
 }
 ---
@@ -22,13 +22,25 @@ Now I sould get this compiled and run automatically on as many platforms as
 possible. Some of them need some special code to work:
 
 --- mcs51_putchar.c
-#include <mcs51reg.h>
+#include <8051.h>
 
-void putchar (char c) {
-	while (!TI)
-		/*busy wait*/;
+static void uart_init()
+{	SCON = 0x50;  /* Asynchronous mode, 8-bit data and 1-stop bit */
+	TMOD = 0x20;  /* Timer1 in Mode2. */
+	TH1 = 0xFD;   /* Baud rate 9600 */
+	TL1 = 0xFD;   /* Baud rate 9600 */
+	TR1 = 1;      /* Turn ON the timer for Baud rate generation */
+}
+
+void putchar(char c)
+{	static int uart_initialized = 0;
+	if (!uart_initialized)
+	{	uart_init();
+		uart_initialized = 1;
+	}
 	TI = 0;
 	SBUF = c;
+	while (!TI);
 }
 ---
 

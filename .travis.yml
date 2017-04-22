@@ -17,7 +17,7 @@ matrix:
     - PLATFORM_SOURCES=mcs51_putchar.c
     - OBJ_EXT=.rel
     - BIN_EXT=.hex
-    - RUN=head
+    - RUN=./run51.sh
 
   - compiler: avr-gcc
     env:

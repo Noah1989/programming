@@ -4,7 +4,7 @@ run: bin/hello$(BIN_EXT)
 	$(RUN) bin/hello$(BIN_EXT)
 
 clean:
-	rm -rfv src obj bin
+	rm -rfv src obj bin *.log
 
 src: lit/hello.lit
 	mkdir -p src
