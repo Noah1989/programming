@@ -13,11 +13,11 @@ matrix:
 
   - compiler: sdcc
     env:
-    - CFLAGS="-mmcs51 --std-c89 -Werror"
+    - CFLAGS="-mmcs51 --std-c89 --Werror"
     - PLATFORM_SOURCES=mcs51_putchar.c
     - OBJ_EXT=.rel
     - BIN_EXT=.hex
-    - RUN=cat
+    - RUN=head
 
   - compiler: avr-gcc
     env:
